@@ -105,7 +105,7 @@ class Spinner {
 			spc += " "
 		}
 		spc += percentage;
-  		process.stdout.cursorTo(0); 
+  	process.stdout.cursorTo(0); 
 		process.stdout.write(this.color + spc +'\x1b[0m')
 	}
 }
