@@ -1,3 +1,7 @@
+const readline = require('readline');
+readline.emitKeypressEvents(process.stdin);
+process.stdin.setRawMode(true);
+
 module.exports = {
 	yellow: (text) => {
 		return '\x1b[33m'+ text +'\x1b[0m';
@@ -76,6 +80,9 @@ module.exports = {
 	},
 	spinner: (color) => {
 		return new Spinner(color);
+	},
+	selects: (options) => {
+		return new Select(options);
 	}
 }
 
@@ -108,6 +115,49 @@ class Spinner {
   	process.stdout.cursorTo(0); 
 		process.stdout.write(this.color + spc +'\x1b[0m')
 	}
+}
+
+class Select {
+	constructor(options) {
+  	this.options = options
+  	this.line = options.length;
+	}
+	show() {
+		for(var i =0 ; i < this.options.length; i ++){
+			process.stdout.write(this.options[i] + " \n")
+		}
+		process.stdin.on('keypress', (str, key) => {
+  		if (key && key.ctrl && key.name == 'c') process.exit();
+  		if(key.name === 'down'){
+  			this.down();
+  		} else if(key.name === 'up'){
+  			this.up();
+  		} else if(key.name === 'return'){
+  			this.selected = this.options[this.line]
+
+  			process.stdout.moveCursor(0, this.options.length - this.line); 
+  			console.log(this.selected)
+  			process.stdin.setRawMode(false);
+  			return;
+  		}
+		})
+	}
+	down() {
+		if(this.line < this.options.length){
+			this.line += 1
+  		process.stdout.moveCursor(0, 1); 
+		} else {
+			return ;
+		}
+	}
+	up() {
+		if(this.line >= 1 && this.line <= this.options.length){
+			this.line -= 1
+  		process.stdout.moveCursor(0, -1); 
+		} else {
+			return ;
+		}
+	} 
 }
 
 
