@@ -25,7 +25,7 @@ cli = require("./index")
 // console.log(cli.bgWhite("Hello World"))
 
 // colors = ["yellow", "red", "blue", "cyan", "white", "green", "mgenta" ]
-
+// var i = 0;
 // sp = (color) => {
 // 	spinner = cli.spinner(color)
 // 	var percentage = 1;
@@ -34,20 +34,26 @@ cli = require("./index")
 // 		percentage += 1;
 // 		if(percentage > 100){
 // 			console.log("\n");
+//       i ++;
+
 // 			clearInterval(showSpinner);
+//       if(i == 10) return ;
 // 			sp(colors[Math.floor(Math.random() * 7)])
 // 		} 
 // 	}, 10);
 // }
 
 // sp("blue")
+// var selectMenu ;
+// async function select(){
+// 	selectMenu = cli.selectMenu(['one', 'two', 'three'])
+// 	await selectMenu.show();
+//   console.log(cli.bgCyan(selectMenu.selected))
+// }
 
-async function sele(){
-	selectMenu = cli.selects(['one', 'two', 'three'])
-	await selectMenu.show();
-}
+// sele();
 
-sele();
+
 
 
 

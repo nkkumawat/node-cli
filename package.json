@@ -1,11 +1,24 @@
 {
-  "name": "consol",
+  "name": "node-cli-tool",
   "version": "1.0.0",
-  "description": "",
+  "description": "![Example node-cli](https://raw.githubusercontent.com/nkkumawat/node-cli/master/d.png)",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC"
+  "author": "nkkumawat",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nkkumawat/node-cli.git"
+  },
+  "keywords": [
+    "node-cli",
+    "console",
+    "spinner"
+  ],
+  "bugs": {
+    "url": "https://github.com/nkkumawat/node-cli/issues"
+  },
+  "homepage": "https://github.com/nkkumawat/node-cli#readme"
 }
